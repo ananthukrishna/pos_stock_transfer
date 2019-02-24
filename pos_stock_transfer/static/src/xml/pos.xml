@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-name="StockTransferButton">
+        <div class='control-button'>
+            <i class="fa fa-list-ul" />New Transfrer
+        </div>
+    </t>
+    <t t-name="StockTransferReceiveButton">
+        <div class='control-button'>
+            <i class="fa fa-list" />Receive Transfrer
+        </div>
+    </t>
+
+
+    <t t-name="StockTransferLines">
+        <tr>            
+            <td class="row-product">
+                <select class="products">
+                    <t t-foreach="widget.products || []" t-as="item">
+                        <option t-att-value='item.id'>
+                            <t t-esc='item.name'/>
+                        </option>
+                    </t> 
+                </select>
+            </td>
+            <td class="row-quantity">
+                <input class="quantity" type='number' required="required" min="1" max="100000"/>
+            </td>
+            <td class="row-select">
+                <input class="control" type="checkbox" name="record"/>
+            </td>
+        </tr>
+    </t>
+
+    <t t-name="StockTransferWidget">    
+        <div class="modal-dialog">
+            <div class="popup popup-product-creation" style="width:800px !important; height:600px !important;">
+                <div class="header">
+                    <p class="title">Stock Trsansfer</p>                    
+                </div>
+                <div class="container">
+                    <table  class="stock_header">
+                        <tr>
+                            <td>Destination Location</td>
+                            <td>
+                                <select class="locations">
+                                    <t t-foreach="widget.locations || []" t-as="item">
+                                        <option t-att-value='item.id'>
+                                            <t t-esc='item.name'/>                                                
+                                        </option>
+                                    </t>
+                                </select>
+                            </td>
+                            <td>Source Location</td>
+                            <td><t t-esc='widget.source_location'/></td>
+                        </tr>
+                    </table>                    
+                </div>
+                <form role="form" t-att-id="id">
+                <div class="main_stock_container">                                  
+                    <table class="stock_container">
+                        <thead>
+                            <tr>                                
+                                <th class="row-product">Product</th>
+                                <th class="row-quantity">Quantiy</th>
+                                <th class="row-select">Select</th>
+                            </tr>
+                        </thead>                        
+                        <tbody class="line_container">                                                 
+                        </tbody>                        
+                    </table>                    
+                </div>                
+                <div class="footer">
+                    <button class="button control-button footer_font cancel" type="submit" value ="Cancel">
+                        <i class="fa fa-times-circle"></i>Cancel
+                    </button>
+                    <button class="button control-button footer_font confirm" type="submit" value ="Confirm">
+                        <i class="fa fa-check-circle"></i>Confirm
+                    </button>
+                    <button class="button control-button footer_font add-row" type="submit" value ="Add Item">
+                        <i class="fa fa-plus-circle"></i>Add Item
+                    </button>
+                    <button class="button control-button footer_font delete-row" type="submit" value ="Delete Item">
+                        <i class="fa fa-minus-circle"></i>Delete Item
+                    </button>
+                </div>
+                </form>
+            </div>            
+        </div>       
+    </t>
+
+    <t t-name="ReceiveStockTransferWidget">
+        <div class="clientlist-screen screen">
+            <div class="screen-content">
+                <section class="top-content">
+                    <span class='button back'>
+                        <i class='fa fa-angle-double-left'></i>
+                        Cancel
+                    </span>
+                    <span class='searchbox' style="margin-left:217px !important;">
+                        <input placeholder='Search Stock Receive by Name' />
+                        <span class='search-clear'></span>
+                    </span>
+                </section>
+                <section class="full-content">
+                    <div class='window'>
+                        <section class='subwindow collapsed'>
+                            <div class='subwindow-container collapsed'>
+                                <div class='subwindow-container-fix order-details-contents'>
+                                </div>
+                            </div>
+                        </section>
+                        <section class='subwindow'>
+                            <div class='subwindow-container'>
+                                <div class='subwindow-container-fix touch-scrollable scrollable-y'>
+                                    <table class='client-list'>
+                                        <thead>
+                                            <tr>
+                                                <th>Name</th>
+                                                <th>Source Location</th>
+                                                <th>Destination Location</th>
+                                                <th></th>                                                
+                                            </tr>
+                                        </thead>
+                                        <tbody class='receive-transfer-list-lines'>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </t>
+
+    <t t-name="ReceiveStockLines">
+        <tr class='order-line' t-att-data-id='picking.id'>
+            <td><t t-esc='picking.name' /></td>            
+            <td><t t-esc='picking.location_id' /></td>
+            <td><t t-esc='picking.location_dest_id'/></td>
+            <td class="receive-stock-button" t-att-data-id='picking.id'><span class="button receive-stock" >Receive</span></td>
+        </tr>
+    </t>
+
+    <t t-name="ReceiveStockTransferPopupWidget">        
+        <div class="modal-dialog">
+            <div class="popup popup-selection stock_receive_popup_pos" style="width:800px !important;">
+                <p class="title">Resceive Stock Transfer</p>
+                <form>
+                <div class='selection scrollable-y touch-scrollable'>                    
+                    <table id = "list" cellspacing = "1px" cellpadding = "10px" text-align = "center" width="100%" style="border:1px;padding-left:1.16cm;">
+                        <thead>
+                            <tr>                                
+                                <td>Product ID</td>
+                                <td>Product</td>
+                                <td>Quantity</td>
+                                <td>Received</td>
+                            </tr>
+                        </thead>
+                        <tbody id="received_product_lines">                                
+                        </tbody>
+                    </table>
+                </div>
+                <div class="footer">
+                    <button class="button control-button footer_font cancel" type="submit" value ="Cancel">
+                        <i class="fa fa-times-circle"></i>Cancel
+                    </button>
+                    <button class="button control-button footer_font confirm" type="submit" value ="Confirm">
+                        <i class="fa fa-check-circle"></i>Confirm                        
+                    </button>                    
+                </div>
+                </form>
+            </div>
+        </div>
+        
+    </t>
+
+    <t t-name="ReceiveStockTransferPopupLines">
+        <tr>
+            <td class='product_id' t-att-data-cid='product_line.product_id'><t t-esc='product_line.product_id'/></td>
+            <td><t t-esc='product_line.product'/></td>
+            <td><t t-esc='product_line.ordered_qty'/></td>
+            <td>    
+                <input class='received_quantity' type='number' required='required' t-att-data-qty='product_line.ordered_qty'></input>
+            </td>
+        </tr>
+    </t>
+</templates>

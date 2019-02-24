@@ -1,0 +1,115 @@
+/* Stock Transfer Widget Style */
+.main_stock_container {
+	width: 100%;
+	padding: 0px;
+	margin: auto;
+}
+table.stock_container {
+	table-layout: fixed;  	
+	white-space: nowrap;
+	width: 100%;
+}
+table.stock_container thead {
+	background:#6EC89B;
+	display:table;
+	width:100%;
+	width:calc(100%);
+	color: white;
+}
+table.stock_container td,
+table.stock_container th {
+	text-align: left;
+	padding: 5px 10px;
+}
+table.stock_container tbody{
+	height:65% !important;	
+	overflow-y:scroll;
+	display:block;
+	width:100%;
+	position: absolute;
+}
+table.stock_container tr{
+	display:table !important;
+	width:100% !important;
+	table-layout:fixed !important;
+}
+
+table.stock_container tr:nth-child(even) {
+	background: rgb(215, 241, 215);
+}
+.row-product {
+	width: 60%;
+}
+.row-quantity {
+	width: 30%;
+}
+.row-select {
+	width: 10%;
+}
+.products{
+	width: 100% !important;
+	height: 30px !important;
+	min-height: 30px !important;
+}
+
+.quantity{
+	min-height: 30px !important;
+	height: 30px !important;
+}
+.control{
+	position: relative !important;
+	background-color: #6EC89B;
+	min-height: auto !important;
+	width: 17px !important;
+	border-radius: 3px !important;
+	margin-top: 5px !important;
+}
+table.stock_header .locations{
+	height: 30px !important;
+	min-height: 30px !important;
+}
+
+table.stock_header {
+	margin: auto;
+	width: 100%;
+	height: 50px;
+	font-size: small;
+}
+table.stock_header tr{
+	margin: auto;
+	width: 25% !important;
+}
+table.stock_header tr td{
+	margin: auto;
+	width: 25% !important;
+}
+
+.footer_font{
+	font-family: "Lato","Lucida Grande", Helvetica, Verdana, Arial !important;
+    color: #555555 !important;
+    font-size: 15px !important;
+    font-weight: normal !important;
+}
+span.button.receive-stock {
+    top: 0px;
+    line-height: 32px;
+    padding: 3px 13px;
+    font-size: 13px;
+    border-radius: 3px;
+    border: solid 1px rgb(209, 209, 209);
+    cursor: pointer;
+	transition: all 150ms linear;
+	background: #6EC89B !important;
+    border: solid 1px #64AF8A !important;
+    color: white !important;
+}
+span.button.receive-stock:hover {
+    background: #4d9873 !important;
+}
+.pos .popup input:focus, .pos .popup-input.active {
+    outline: none !important;
+    box-shadow: none !important;
+}
+input.received_quantity{
+	width: 150px !important;
+}

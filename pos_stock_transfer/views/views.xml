@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="assets_backend" name="pos_choosing_cashier assets" inherit_id="point_of_sale.assets">
+        <xpath expr="." position="inside">
+            <link rel="stylesheet" href="/pos_stock_transfer/static/src/css/styles.css"/>                
+            <script type="text/javascript" src="/pos_stock_transfer/static/src/js/main.js"></script>
+            <script src="/pos_stock_transfer/static/src/js/jquery.searchabledropdown-1.0.8.src.js"></script>
+        </xpath>
+    </template>
+</odoo>
